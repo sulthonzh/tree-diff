@@ -1,0 +1,15 @@
+{
+  "name": "tree-diff",
+  "version": "1.0.0",
+  "description": "Compare two directory trees — added/removed/modified files, content hashes, size changes",
+  "main": "dist/index.js",
+  "bin": { "tree-diff": "dist/cli.js" },
+  "type": "module",
+  "scripts": { "build": "tsc", "test": "node --test dist/test/index.test.js" },
+  "keywords": ["tree", "diff", "directory", "compare", "file-system"],
+  "author": "sulthonzh",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/sulthonzh/tree-diff" },
+  "engines": { "node": ">=18" },
+  "files": ["dist/**/*.js", "!dist/test/**"]
+}
