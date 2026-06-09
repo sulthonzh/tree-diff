@@ -1,2 +1,32 @@
+# dependencies
 node_modules/
-dist/test/
+
+# build
+dist/
+*.tsbuildinfo
+
+# test
+coverage/
+.nyc_output/
+
+# env
+.env
+.env.local
+.env*.local
+!.env.example
+
+# logs
+*.log
+
+# os
+.DS_Store
+Thumbs.db
+
+# ide
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# package
+*.tgz
