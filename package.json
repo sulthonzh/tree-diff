@@ -1,0 +1,25 @@
+{
+  "name": "tree-diff",
+  "version": "1.0.0",
+  "description": "Compare two directory trees and report added, removed, modified, and moved files. Zero dependencies.",
+  "main": "src/index.js",
+  "bin": {
+    "tree-diff": "bin/cli.js"
+  },
+  "scripts": {
+    "test": "node test/run.js"
+  },
+  "keywords": [
+    "diff",
+    "directory",
+    "tree",
+    "compare",
+    "cli",
+    "zero-deps"
+  ],
+  "author": "sulthonzh",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
