@@ -2,8 +2,6 @@ import { createHash } from "crypto";
 import { lstat, readdir, readFile, readlink } from "fs/promises";
 import { join, relative, basename } from "path";
 
-// --- Types ---
-
 export interface TreeEntry {
   path: string;
   type: "file" | "dir" | "symlink" | "other";
@@ -62,8 +60,6 @@ export interface FormatOptions {
   color?: boolean;
 }
 
-// --- Scanning ---
-
 function shouldIgnore(relPath: string, ignore: string[]): boolean {
   const parts = relPath.split(/[/\\]/);
   for (const pattern of ignore) {
@@ -84,7 +80,7 @@ async function hashFile(filePath: string): Promise<string> {
 }
 
 export async function scanTree(root: string, options: ScanOptions = {}): Promise<TreeSnapshot> {
-  const { ignore = [], followSymlinks = false, hashFiles = true, maxDepth } = options;
+  const { ignore = [], hashFiles = true, maxDepth } = options;
   const entries = new Map<string, TreeEntry>();
 
   async function walk(dir: string, depth: number): Promise<void> {
@@ -105,7 +101,7 @@ export async function scanTree(root: string, options: ScanOptions = {}): Promise
 
       let stat;
       try {
-        stat = followSymlinks ? await lstat(fullPath) : await lstat(fullPath);
+        stat = await lstat(fullPath);
       } catch {
         continue;
       }
@@ -146,8 +142,6 @@ export async function scanTree(root: string, options: ScanOptions = {}): Promise
 
   return { root, entries, timestamp: Date.now() };
 }
-
-// --- Diffing ---
 
 export function diffTrees(left: TreeSnapshot, right: TreeSnapshot): DiffResult {
   const entries: DiffEntry[] = [];
@@ -202,8 +196,6 @@ export function diffTrees(left: TreeSnapshot, right: TreeSnapshot): DiffResult {
     summary: { added, removed, modified, typeChanged, unchanged, totalSizeDelta },
   };
 }
-
-// --- Formatting ---
 
 function formatBytes(bytes: number): string {
   if (bytes === 0) return "0 B";
