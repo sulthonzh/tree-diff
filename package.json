@@ -36,5 +36,9 @@
   },
   "devDependencies": {
     "@types/node": "^25.9.3"
+  },
+  "homepage": "https://github.com/sulthonzh/tree-diff#readme",
+  "bugs": {
+    "url": "https://github.com/sulthonzh/tree-diff/issues"
   }
 }
