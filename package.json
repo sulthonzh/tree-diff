@@ -9,7 +9,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "test": "node --test dist/test/index.test.js"
+    "test": "node --test dist/test/index.test.js",
+    "test:coverage": "c8 node --test dist/test/index.test.js"
   },
   "keywords": [
     "tree",
@@ -35,7 +36,8 @@
     "access": "public"
   },
   "devDependencies": {
-    "@types/node": "^25.9.3"
+    "@types/node": "^25.9.3",
+    "c8": "^10.1.2"
   },
   "homepage": "https://github.com/sulthonzh/tree-diff#readme",
   "bugs": {
